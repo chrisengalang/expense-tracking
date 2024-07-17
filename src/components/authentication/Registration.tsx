@@ -14,7 +14,7 @@ const Registration = () => {
 
   const handleRegistration = (e:React.FormEvent) => {
     e.preventDefault()
-    registerUser(email, password).then((result) => {
+    registerUser(name, email, password).then((result) => {
       if (result) {
         setHasError(false)
         navigate('/')
