@@ -1,5 +1,6 @@
-import Login from "../components/authentication/Login"
-import Registration from "../components/authentication/Registration"
+import Dashboard from "../components/Dashboard"
+import Login from "../components/Login"
+import Registration from "../components/Registration"
 
 const routes = [
   {
@@ -9,8 +10,18 @@ const routes = [
   },
   {
     path: '/registration',
-    name: 'Registartion',
+    name: 'Registration',
     element: <Registration />
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    children: [
+      {
+        path: '/dashboard',
+        element: <Dashboard />
+      }
+    ]
   }
 ]
 
