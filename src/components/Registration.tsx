@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { register } from "../service/AuthenticationService"
+import { RegistrationDto } from "../model/dto/RegistrationDto"
 
 const Registration = () => {
   
@@ -9,8 +10,12 @@ const Registration = () => {
 
   const handleRegister = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault()
-
-    register(username, password, name)
+    const registrationDto : RegistrationDto = {
+      username: username,
+      password: password,
+      name: name
+    }
+    register(registrationDto)
   }
 
   return (

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { signIn } from "../service/AuthenticationService";
+import { LoginDto } from "../model/dto/LoginDto";
 
 const Login = () => {
 
@@ -8,7 +9,11 @@ const Login = () => {
 
   const handleSignIn = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault()
-    signIn(username, password);
+    const loginDto : LoginDto = {
+      username: username,
+      password: password
+    }
+    signIn(loginDto);
   }
 
   return (
