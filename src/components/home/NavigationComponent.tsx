@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { signOut } from "../../service/AuthenticationService"
 
-const Navigation = () => {
+const NavigationComponent = () => {
 
   const navigate = useNavigate()
 
@@ -22,4 +22,4 @@ const Navigation = () => {
   )
 }
 
-export default Navigation
+export default NavigationComponent

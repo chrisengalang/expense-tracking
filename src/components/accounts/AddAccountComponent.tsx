@@ -2,9 +2,9 @@ import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../context/AuthContext"
 import { Account } from "../../model/entity/Account"
 import { addAccount } from "../../service/AccountService"
-import { Navigate, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
-const AddAccount = () => {
+const AddAccountComponent = () => {
 
   const {currentUser} = useContext(AuthContext)
   const navigate = useNavigate()
@@ -38,4 +38,4 @@ const AddAccount = () => {
   )
 }
 
-export default AddAccount
+export default AddAccountComponent

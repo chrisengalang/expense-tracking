@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/AuthContext"
 
-const Dashboard = () => {
+const DashboardComponent = () => {
 
   const { currentUser } = useContext(AuthContext)
   const navigate = useNavigate()
@@ -20,4 +20,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default DashboardComponent

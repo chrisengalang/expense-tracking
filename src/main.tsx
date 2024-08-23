@@ -2,15 +2,14 @@ import ReactDOM from 'react-dom/client'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import { AuthContextProvider } from './context/AuthContext'
 import PrivateRoutes from './routes/PrivateRoutes'
-import Home from './components/home/Home'
-import Dashboard from './components/home/Dashboard'
-import Accounts from './components/accounts/Accounts'
-import AccountList from './components/accounts/AccountList'
-import AddAccount from './components/accounts/AddAccount'
-import EditAccount from './components/accounts/EditAccount'
 import RegistrationComponent from './components/authentication/RegistrationComponent'
 import LoginComponent from './components/authentication/LoginComponent'
-import AccountComponent from './components/accounts/AccountComponent'
+import HomeComponent from './components/home/HomeComponent'
+import DashboardComponent from './components/home/DashboardComponent'
+import AccountsComponent from './components/accounts/AccountsComponent'
+import AccountListComponent from './components/accounts/AccountListComponent'
+import AddAccountComponent from './components/accounts/AddAccountComponent'
+import EditAccountComponent from './components/accounts/EditAccountComponent'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Router>
@@ -18,13 +17,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route element = { <PrivateRoutes /> }>
           {" "}
-          <Route path = 'home' element = { <Home /> }>
-            <Route index element = { <Dashboard /> } />
-            <Route path = 'dashboard' element = { <Dashboard /> } />
-            <Route path = 'accounts' element = { <Accounts /> }>
-              <Route index element = { <AccountList /> } />
-              <Route path = 'add' element = { <AddAccount /> } />
-              <Route path = ':id/edit' element = { <EditAccount /> } />
+          <Route path = 'home' element = { <HomeComponent /> }>
+            <Route index element = { <DashboardComponent /> } />
+            <Route path = 'dashboard' element = { <DashboardComponent /> } />
+            <Route path = 'accounts' element = { <AccountsComponent /> }>
+              <Route index element = { <AccountListComponent /> } />
+              <Route path = 'add' element = { <AddAccountComponent /> } />
+              <Route path = ':id/edit' element = { <EditAccountComponent /> } />
             </Route>
           </Route>
         </Route>
