@@ -1,5 +1,5 @@
 import Accounts from "../components/Accounts"
-import Dashboard from "../components/Dashboard"
+import Dashboard from "../components/Home"
 import Login from "../components/Login"
 import Registration from "../components/Registration"
 

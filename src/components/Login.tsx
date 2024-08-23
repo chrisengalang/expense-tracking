@@ -17,9 +17,11 @@ const Login = () => {
       email: email,
       password: password
     }
-    await signIn(loginDto)
+    const error = await signIn(loginDto)
 
-    navigate('/dashboard')
+    if (!error) {
+      navigate('/home')
+    }
   }
   
   return (
