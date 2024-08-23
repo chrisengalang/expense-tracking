@@ -10,6 +10,7 @@ import AccountsComponent from './components/accounts/AccountsComponent'
 import AccountListComponent from './components/accounts/AccountListComponent'
 import AddAccountComponent from './components/accounts/AddAccountComponent'
 import EditAccountComponent from './components/accounts/EditAccountComponent'
+import AccountComponent from './components/accounts/AccountComponent'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Router>
@@ -23,6 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <Route path = 'accounts' element = { <AccountsComponent /> }>
               <Route index element = { <AccountListComponent /> } />
               <Route path = 'add' element = { <AddAccountComponent /> } />
+              <Route path = ':id' element = { <AccountComponent /> } />
               <Route path = ':id/edit' element = { <EditAccountComponent /> } />
             </Route>
           </Route>

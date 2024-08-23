@@ -1,16 +1,14 @@
-import { Account } from "../../model/entity/Account"
+import { useLocation } from "react-router-dom"
 
-type Props = {
-  account: Account
-}
+const AccountComponent = () => {
 
-const AccountComponent = ({account}: Props) => {
+  const { state } = useLocation()
 
   return (
-    <tr>
-      <td>{account.name}</td>
-      <td>{account.balance}</td>
-    </tr>
+    <div>
+      <h1>{state.account.name}</h1>
+      <p>{state.account.balance}</p>
+    </div>
   ) 
 }
 

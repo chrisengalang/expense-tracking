@@ -1,13 +1,15 @@
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../context/AuthContext"
 import { getAccounts } from "../../service/AccountService"
-import AccountComponent from "./AccountComponent"
+import { Account } from "../../model/entity/Account"
+import { useNavigate } from "react-router-dom"
 
-const AccountList = () => {
+const AccountListComponent = () => {
 
   const {currentUser} = useContext(AuthContext)
   const [accounts, setAccounts] = useState([])
   const [userId] = useState(currentUser.uid)
+  const navigate = useNavigate()
 
   useEffect(() => {
     getAccounts(userId).then((data) => {
@@ -17,6 +19,10 @@ const AccountList = () => {
       }
     })
   }, [])
+
+  const handleClickAccount = (account: Account) => {
+    navigate(`/home/accounts/${account.id}`, {state: {account: account}})
+  }
 
   return (
     <div>
@@ -33,7 +39,10 @@ const AccountList = () => {
           <tbody>
             {
               accounts.map((account) => (
-                <AccountComponent key={account.id} account={account} />
+                <tr key={account.id} onClick={() => handleClickAccount(account)}>
+                  <td>{account.name}</td>
+                  <td>{account.balance}</td>
+                </tr>
               ))
             }
           </tbody>
@@ -43,4 +52,4 @@ const AccountList = () => {
   )
 }
 
-export default AccountList
+export default AccountListComponent
