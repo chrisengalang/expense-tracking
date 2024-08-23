@@ -1,28 +1,27 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth"
-import { LoginDto } from "../model/dto/LoginDto"
-import { RegistrationDto } from "../model/dto/RegistrationDto"
 import { User } from "../model/entity/User"
 import { addUser } from "./UserService"
 import { auth } from "../firebase"
+import { Login } from "../model/entity/Login"
+import { Registration } from "../model/entity/Registration"
 
-const signIn = async (loginDto : LoginDto) : Promise<Error> => {
+const signIn = async (login : Login) : Promise<Error> => {
   try {
-    await signInWithEmailAndPassword(auth, loginDto.email, loginDto.password)
+    await signInWithEmailAndPassword(auth, login.email, login.password)
   } catch (error) {
     return new Error(error)
   }
-  console.log(`Username: ${loginDto.email}, Password: ${loginDto.password}`)
 }
 
-const register = async (registrationDto: RegistrationDto) : Promise<Error> => {
+const register = async (registration: Registration) : Promise<Error> => {
   try {
-    await createUserWithEmailAndPassword(auth, registrationDto.email, registrationDto.password)
-    await updateProfile(auth.currentUser, {displayName: registrationDto.name})
+    await createUserWithEmailAndPassword(auth, registration.email, registration.password)
+    await updateProfile(auth.currentUser, {displayName: registration.name})
 
     const entity : User = {
       id: auth.currentUser.uid,
-      email: registrationDto.email,
-      name: registrationDto.name
+      email: registration.email,
+      name: registration.name
     }
 
     await addUser(entity)

@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { register } from "../../service/AuthenticationService"
-import { RegistrationDto } from "../../model/dto/RegistrationDto"
 import { useNavigate } from "react-router-dom"
+import { Registration } from "../../model/entity/Registration"
 
-const Registration = () => {
+const RegistrationComponent = () => {
   
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -13,13 +13,13 @@ const Registration = () => {
 
   const handleRegister = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault()
-    const registrationDto : RegistrationDto = {
+    const registration : Registration = {
       email: email,
       password: password,
       name: name
     }
 
-    const error = await register(registrationDto)
+    const error = await register(registration)
 
     if (error) {
       setError(true)
@@ -44,4 +44,4 @@ const Registration = () => {
   )
 }
 
-export default Registration
+export default RegistrationComponent

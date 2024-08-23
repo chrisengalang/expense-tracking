@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { signIn } from "../../service/AuthenticationService";
-import { LoginDto } from "../../model/dto/LoginDto";
 import { useNavigate } from "react-router-dom";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../firebase";
+import { Login } from "../../model/entity/Login";
 
-const Login = () => {
+const LoginComponent = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -13,11 +11,11 @@ const Login = () => {
 
   const handleSignIn = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault()
-    const loginDto : LoginDto = {
+    const login : Login = {
       email: email,
       password: password
     }
-    const error = await signIn(loginDto)
+    const error = await signIn(login)
 
     if (!error) {
       navigate('/home')
@@ -38,4 +36,4 @@ const Login = () => {
 
 }
 
-export default Login
+export default LoginComponent

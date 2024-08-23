@@ -12,7 +12,7 @@ const Accounts = () => {
         Accounts for { currentUser.displayName }
       </h1>
       <Link to='add'>Add</Link>
-      <Link to='accounts'>List</Link>
+      <Link to=''>List</Link>
       <Outlet />
     </div>
   )
