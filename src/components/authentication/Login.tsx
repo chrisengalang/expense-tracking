@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { signIn } from "../service/AuthenticationService";
-import { LoginDto } from "../model/dto/LoginDto";
+import { signIn } from "../../service/AuthenticationService";
+import { LoginDto } from "../../model/dto/LoginDto";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../../firebase";
 
 const Login = () => {
 

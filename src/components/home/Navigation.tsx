@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom"
-import { signOut } from "../service/AuthenticationService"
+import { signOut } from "../../service/AuthenticationService"
 
 const Navigation = () => {
 

@@ -1,5 +1,6 @@
 import { useContext } from "react"
-import { AuthContext } from "../context/AuthContext"
+import { AuthContext } from "../../context/AuthContext"
+import { Link, Outlet } from "react-router-dom"
 
 const Accounts = () => {
 
@@ -10,6 +11,9 @@ const Accounts = () => {
       <h1>
         Accounts for { currentUser.displayName }
       </h1>
+      <Link to='add'>Add</Link>
+      <Link to='accounts'>List</Link>
+      <Outlet />
     </div>
   )
 }
