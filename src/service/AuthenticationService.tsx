@@ -1,11 +1,16 @@
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth"
 import { LoginDto } from "../model/dto/LoginDto"
 import { RegistrationDto } from "../model/dto/RegistrationDto"
 import { User } from "../model/entity/User"
 import { addUser } from "./UserService"
 import { auth } from "../firebase"
 
-const signIn = async (loginDto : LoginDto) => {
+const signIn = async (loginDto : LoginDto) : Promise<Error> => {
+  try {
+    await signInWithEmailAndPassword(auth, loginDto.email, loginDto.password)
+  } catch (error) {
+    return new Error(error)
+  }
   console.log(`Username: ${loginDto.email}, Password: ${loginDto.password}`)
 }
 
@@ -32,5 +37,6 @@ const signOut = async () => {
 
 export {
   signIn,
+  signOut,
   register
 }

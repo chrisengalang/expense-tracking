@@ -1,21 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { signIn } from "../service/AuthenticationService";
 import { LoginDto } from "../model/dto/LoginDto";
+import { useNavigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase";
 
 const Login = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate()
 
-  const handleSignIn = (e: React.MouseEvent<HTMLElement>) => {
+  const handleSignIn = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault()
     const loginDto : LoginDto = {
       email: email,
       password: password
     }
-    signIn(loginDto);
-  }
+    await signIn(loginDto)
 
+    navigate('/dashboard')
+  }
+  
   return (
     <div>
       <h1>Login</h1>
