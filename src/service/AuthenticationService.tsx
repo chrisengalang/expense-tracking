@@ -26,6 +26,8 @@ const register = async (registration: Registration) : Promise<Error> => {
     }
 
     await addUser(entity)
+
+    signOut()
   } catch (error) {
     return new Error(error)
   }
