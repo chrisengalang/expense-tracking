@@ -7,7 +7,8 @@ import { Registration } from "../model/Registration"
 
 const signIn = async (login : Login) : Promise<Error> => {
   try {
-    await signInWithEmailAndPassword(auth, login.email, login.password)
+    const userCredential = await signInWithEmailAndPassword(auth, login.email, login.password)
+    sessionStorage.setItem('user', JSON.stringify(userCredential.user))
   } catch (error) {
     return new Error(error)
   }
@@ -31,6 +32,7 @@ const register = async (registration: Registration) : Promise<Error> => {
 }
 
 const signOut = async () => {
+  sessionStorage.removeItem('user')
   auth.signOut()
 }
 

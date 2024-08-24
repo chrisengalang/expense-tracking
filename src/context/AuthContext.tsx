@@ -2,30 +2,28 @@ import { onAuthStateChanged, User } from "firebase/auth"
 import { createContext, useEffect, useState } from "react"
 import { auth } from "../firebase"
 
-type InitialState = {
-  currentUser: User | null
-  isAuthenticated: Boolean
+const getInitialState = () => {
+  const currentUser = sessionStorage.getItem('user')
+  return currentUser ? JSON.parse(currentUser) : null
 }
 
-export const AuthContext = createContext<InitialState>({ currentUser: null, isAuthenticated: false})
+export const AuthContext = createContext({})
 
 export const AuthContextProvider = ({children} : {children: React.ReactNode}) => {
 
-  const [currentUser, setCurrentUser] = useState<User | null>(null)
+  const [currentUser, setCurrentUser] = useState<User | null>(getInitialState)
   const [loading, setLoading] = useState(false)
 
   const isAuthenticated = !!currentUser
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setCurrentUser(user)
-        setLoading(false)
-      }
-    })
+    sessionStorage.setItem('user', JSON.stringify(currentUser))
 
-    return unsubscribe
-  },[])
+    if (!currentUser) {
+      setLoading(false)
+    }
+
+  },[currentUser])
 
   return (
     <AuthContext.Provider value={{currentUser, isAuthenticated}}>
