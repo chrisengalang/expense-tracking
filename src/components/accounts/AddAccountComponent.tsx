@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../context/AuthContext"
-import { Account } from "../../model/entity/Account"
+import { Account } from "../../model/Account"
 import { addAccount } from "../../service/AccountService"
 import { useNavigate } from "react-router-dom"
 

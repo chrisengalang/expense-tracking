@@ -1,5 +1,5 @@
 import { doc, setDoc } from "firebase/firestore"
-import { User } from "../model/entity/User"
+import { User } from "../model/User"
 import { db } from "../firebase"
 
 const addUser = async (user: User) => {

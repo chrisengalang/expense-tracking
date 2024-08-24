@@ -1,4 +1,4 @@
-import { Account } from "../model/entity/Account"
+import { Account } from "../model/Account"
 import { insertAccount, retrieveAccounts } from "../repository/AccountRepository"
 
 const addAccount = async (account: Account) : Promise<Error> => {

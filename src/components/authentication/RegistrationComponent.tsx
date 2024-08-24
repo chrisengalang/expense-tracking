@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { register } from "../../service/AuthenticationService"
 import { useNavigate } from "react-router-dom"
-import { Registration } from "../../model/entity/Registration"
+import { Registration } from "../../model/Registration"
 
 const RegistrationComponent = () => {
   

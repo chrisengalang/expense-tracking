@@ -1,5 +1,5 @@
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore"
-import { Account } from "../model/entity/Account"
+import { Account } from "../model/Account"
 import { db } from "../firebase"
 
 const insertAccount = async (account: Account) => {

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../context/AuthContext"
 import { getAccounts } from "../../service/AccountService"
-import { Account } from "../../model/entity/Account"
+import { Account } from "../../model/Account"
 import { useNavigate } from "react-router-dom"
 
 const AccountListComponent = () => {

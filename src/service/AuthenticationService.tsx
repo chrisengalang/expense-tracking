@@ -1,9 +1,9 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth"
-import { User } from "../model/entity/User"
+import { User } from "../model/User"
 import { addUser } from "./UserService"
 import { auth } from "../firebase"
-import { Login } from "../model/entity/Login"
-import { Registration } from "../model/entity/Registration"
+import { Login } from "../model/Login"
+import { Registration } from "../model/Registration"
 
 const signIn = async (login : Login) : Promise<Error> => {
   try {
